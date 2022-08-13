@@ -1,26 +1,20 @@
 'use strict'
 
-let form =document.getElementsByClassName('form')
-form[0].addEventListener('click',handleListener);
+let colorsArr= ['Green','blue','red','yallow','black','white','orange','rgba(133,122,200)','#F1f5f8','#F15025']
 
-function handleListener(event) {
+let button = document.getElementById('btn')
+let color = document.querySelector('.color')
+// let body =document.getElementsByTagName('body')
+
+button.addEventListener('click',handle)
+
+function handle(event) {
     event.preventDefault();
-    const arrayOfColorFunctions = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
-
-let randomColorString = '#';
-// function newColorFind(){
-
-for (let x = 0; x < 6; x++){
-
-    let index = Math.floor(Math.random() * 16)
-    let value = arrayOfColorFunctions[index]
-
-    randomColorString += value
+    let randomColor= getRandomColor()
+    document.body.style.backgroundColor=colorsArr[randomColor]
+    color.textContent=colorsArr[randomColor]
 }
- console.log(randomColorString)
 
-
-// }
-    color.innerHTML = "Background Color : " + randomColorString;
-      
+function getRandomColor(){
+    return Math.floor(Math.random()*colorsArr.length)
 }
